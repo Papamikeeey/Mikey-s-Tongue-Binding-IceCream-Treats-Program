@@ -1,0 +1,76 @@
+use std::io; //simple program to practise the understanding and use of Enums
+
+
+enum Flavour { //Enum "enumarates" the different options we have available to us. Only one option can be utilised out of all these...
+    Vanilla,
+    Chocolate,
+    Peach,
+    Mango,
+    Blueberry,
+    Cheesecake,
+}
+
+fn print_flavour(flavour: Flavour) { //Here comes the match in enums which is how we appoint the instructions based on the option selected...
+    match flavour {
+        Flavour::Vanilla => println!("Great classic choice. Here comes your delicious Vanilla ice cream 🍦"),
+        Flavour::Chocolate => println!("Lovin that choco huh? Great choice! 🍫"),
+        Flavour::Peach => println!("Can't miss with Peach! Peach coming up right now. 🍑"),
+        Flavour::Mango => println!("We see you going healthy! Mango for a tango! 🍐"),
+        Flavour::Blueberry => println!("Such a sacred fruit and choice designed to excite your taste buds!\nCatch some blues with this Blueberry. 🍇"),
+        Flavour::Cheesecake => println!("Bursting with flavours, this will be a blast! Enjoy your cheesecake! 🍨"),
+    }
+}
+
+fn main() { //Where my program starts to run...
+
+    loop {
+    
+        println!("Welcome to Mikey's Tongue-Binding IceCream treats! The best in East Africa!");
+        println!("Which flavour will you indulge in today?");
+        
+        println!("Available options:\nVanilla 🍦 \nChocolate 🍫\nPeach 🍑\nMango 🍐 \nBlueberry 🍇\nCheesecake 🍨");
+        
+        let mut input_flavour = String::new();
+        
+        io::stdin()
+            .read_line(&mut input_flavour)
+            .expect("Please input a flavour from the options above..."); //Code to read the input from the user
+            
+            let input_flavour = input_flavour.trim().to_lowercase(); //code that "sanitizes" the user input e.g. trims out excess space and converts everything to lower case for ease of the machine reading...
+            
+            
+            match input_flavour.as_str() { //the "as_str()" allows the program to read the input quickly 
+                "vanilla" => {
+                            print_flavour(Flavour::Vanilla);
+                            break;
+                            }
+                "chocolate" => {
+                            print_flavour(Flavour::Chocolate);
+                            break;
+                            }
+                "peach" => {
+                            print_flavour(Flavour::Peach);
+                            break;
+                           }
+                "mango" => {
+                            print_flavour(Flavour::Mango);
+                            break;
+                           }
+                "blueberry" => {
+                            print_flavour(Flavour::Blueberry);
+                            break;
+                             }
+                "cheesecake" => {
+                            print_flavour(Flavour::Cheesecake);
+                            break;
+                            }
+                _ => {
+                    println!("Sorry, 😬 I haven't quite got your option. Please select from the available choices");
+                    continue; //redirects the user to select appropriate input
+                } 
+            
+            }
+        }
+        
+        
+}
